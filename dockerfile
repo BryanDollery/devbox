@@ -23,7 +23,9 @@ run apt-get update && \
     apt autoclean && \
     apt-get clean && \
     apt autoremove
-
+run mv /.bash_profile ~
+run echo "export PATH=$PATH:/home/bryan_dollery/bin:/usr/local/go/bin" >> ~/.bash_profile
+run echo ". ~/.bash_profile" >> ~/.bashrc
 entrypoint ["/bin/bash"]
 
 
