@@ -18,3 +18,4 @@ Docker image that contains most tools needed to build and compile software and t
  - nodejs (includes npm)
  - go
 
+This takes nearly 9 minutes to build and takes up 1.6GB
