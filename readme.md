@@ -1,3 +1,4 @@
+#What?
 Docker image that contains most tools needed to build and compile software and to play around with things. Manifest includes:
 
  - curl
@@ -19,3 +20,9 @@ Docker image that contains most tools needed to build and compile software and t
  - go
 
 This takes nearly 9 minutes to build and takes up 1.6GB
+---
+#Build
+Run the build script
+
+#Run
+Run the run script
