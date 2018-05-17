@@ -24,9 +24,9 @@ This takes nearly 9 minutes to build and takes up 1.6GB
 
 ---
 
-#Build
+# Build
 Run the build script
 
-#Run
+# Run
 Run the run script
 
