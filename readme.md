@@ -6,7 +6,7 @@ Docker image that contains most tools needed to build and compile software and t
  - build-essential (includes c/c++, make, etc.)
  - software-properties-common
  - docker-ce 
- - openjdk-8-jdk 
+ - openjdk-8-jdk (java 8)
  - python 
  - python-dev 
  - python-pip 
@@ -16,3 +16,5 @@ Docker image that contains most tools needed to build and compile software and t
  - php-cli 
  - git 
  - nodejs (includes npm)
+ - go
+
