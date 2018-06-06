@@ -1,2 +1,13 @@
 #/bin/bash
-sudo docker container run --name devbox --entrypoint /bin/bash -it --rm -h devbox -p 8181:8080 -v `pwd`:/work -v $HOME/bin:/root/bin/ -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/dev/codification/git/devbox:/devbox -v $HOME:$HOME -v $HOME/.ssh:/root/.ssh -w $HOME bryandollery/devbox
+sudo docker container run \
+     -it --rm \
+     --name devbox \
+     -h devbox \
+     -v $HOME/.gitconfig:/root/.gitconfig \
+     -v `pwd`:/work \
+     -v $HOME/bin:/root/bin/ \
+     -v /var/run/docker.sock:/var/run/docker.sock \
+     -v $HOME:$HOME \
+     -v $HOME/.ssh:/root/.ssh \
+     -w /work \
+     bryandollery/devbox
