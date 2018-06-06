@@ -30,7 +30,7 @@ run curl -sSLO http://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.31/bin/apache-
     tar -xzf apache-tomcat-8.5.31.tar.gz -C /tomcat --strip-components 1 && \
     rm /apache-tomcat-8.5.31.tar.gz && \
     echo "export PATH=$PATH:/tomcat/bin" >> /root/.bashrc
-run mv /war/* /tomcat/webapps
+run mv /war/OpenAM-Community-Edition-11.0.3.war /tomcat/webapps/openam.war
 
 entrypoint ["/bin/bash", "/tomcat/bin/startup.sh"]
 
