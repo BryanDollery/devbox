@@ -1,2 +1,2 @@
 #/bin/bash
-docker build --tag devbox:single .
+sudo docker build --tag devbox:single .
