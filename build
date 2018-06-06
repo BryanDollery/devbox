@@ -1,2 +1,2 @@
 #/bin/bash
-sudo docker build --tag devbox:single .
+docker build --tag bryandollery/devbox .
