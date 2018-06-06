@@ -15,15 +15,15 @@ run apt-get update && \
     add-apt-repository ppa:neovim-ppa/unstable && \
     apt-get update && \
     apt-cache policy docker-ce && \
-    apt-get install -y wget jq build-essential docker-ce openjdk-8-jdk maven python python-dev python-pip vim php php-cli git nodejs && \
+    apt-get install -y wget vim jq build-essential docker-ce openjdk-8-jdk maven python python-dev python-pip vim php php-cli git nodejs && \
     curl -O https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" && \
     apt autoclean && \
     apt-get clean && \
     apt autoremove
-run mv /.bash_profile ~
-run echo "export PATH=$PATH:/home/bryan_dollery/bin:/usr/local/go/bin" >> ~/.bash_profile
-run echo ". ~/.bash_profile" >> ~/.bashrc
+copy pom.xml /root
+run cd /root && mvn clean install
+
 entrypoint ["/bin/bash"]
 
 
