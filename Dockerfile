@@ -1,5 +1,7 @@
 from ubuntu:latest
 
+copy pom.xml /root
+
 run apt-get update && \
     apt-get install -y apt-transport-https curl software-properties-common apt-utils locales tzdata && \
     echo "tzdata tzdata/Areas select Europe" > timezone.txt \
@@ -14,14 +16,17 @@ run apt-get update && \
     add-apt-repository ppa:openjdk-r/ppa && \
     apt-get update && \
     apt-cache policy docker-ce && \
-    apt-get install -y wget vim jq build-essential docker-ce openjdk-8-jdk maven python python-dev python-pip vim php php-cli git nodejs && \
+    apt-get install -y wget vim jq build-essential docker-ce openjdk-8-jdk maven python python-dev python-pip vim php php-cli git nodejs unzip && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" && \
+    git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime && \
+    sh ~/.vim_runtime/install_awesome_vimrc.sh && \
     apt autoclean && \
     apt-get clean && \
-    apt autoremove
-
-copy pom.xml /root
-run cd /root && mvn dependency:resolve && mvn clean && rm /root/pom.xml
+    apt autoremove && \
+    cd /root && \
+    mvn dependency:resolve && \
+    mvn clean && \
+    rm /root/pom.xml && \
+    rm -rf /tmp/*
 
 entrypoint ["/bin/bash"]
-
