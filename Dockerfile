@@ -16,16 +16,17 @@ run apt-get update && \
     add-apt-repository ppa:openjdk-r/ppa && \
     apt-get update && \
     apt-cache policy docker-ce && \
-    apt-get install -y wget vim jq build-essential docker-ce openjdk-8-jdk maven python python-dev python-pip vim php php-cli git nodejs unzip && \
+    apt-get install -y wget lnav vim jq build-essential docker-ce openjdk-8-jdk maven python python-dev python-pip vim php php-cli git nodejs npm unzip && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" && \
     git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime && \
     sh ~/.vim_runtime/install_awesome_vimrc.sh && \
-    apt autoclean && \
-    apt-get clean && \
-    apt autoremove && \
     cd /root && \
     mvn dependency:resolve && \
     mvn clean && \
+    npm install --global is-up-cli && \
+    apt autoclean && \
+    apt-get clean && \
+    apt autoremove && \
     rm /root/pom.xml && \
     rm -rf /tmp/*
 
