@@ -5,6 +5,7 @@ sudo docker container run \
      -h devbox \
      -v $HOME/.gitconfig:/root/.gitconfig \
      -v `pwd`:/work \
+     -v $HOME/maven_repo:/root/.m2/repository \
      -v $HOME/bin:/root/bin/ \
      -v /var/run/docker.sock:/var/run/docker.sock \
      -v $HOME:$HOME \
