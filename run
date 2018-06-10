@@ -1,7 +1,6 @@
 #/bin/bash
 sudo docker container run \
      -it --rm \
-     --name devbox \
      -h devbox \
      -v $HOME/.gitconfig:/root/.gitconfig \
      -v `pwd`:/work \
