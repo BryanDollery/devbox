@@ -5,7 +5,7 @@ copy aws.tf /work/
 
 env TERRAFORM_VER 0.11.7
 env TERRAFORM_ZIP terraform_${TERRAFORM_VER}_linux_amd64.zip
-env TF_PLUGIN_CACHE_DIR "/home/ubuntu/.terraform.d/plugin-cache"
+env TF_PLUGIN_CACHE_DIR "/root/.terraform.d/plugin-cache"
 
 run apt-get update && \
     apt-get install -y apt-transport-https curl software-properties-common apt-utils locales tzdata && \
