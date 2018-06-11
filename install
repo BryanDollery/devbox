@@ -1,3 +1,4 @@
 #/bin/bash
 mkdir -p ~/bin
-cp ./run ~/bin/devbox
+cp ./runasme ~/bin/devboxme
+cp ./runasroot ~/bin/devbox

@@ -1,11 +1,12 @@
 from ubuntu:latest
 
-copy pom.xml /root/
 copy aws.tf /work/
 
 env TERRAFORM_VER 0.11.7
 env TERRAFORM_ZIP terraform_${TERRAFORM_VER}_linux_amd64.zip
 env TF_PLUGIN_CACHE_DIR "/root/.terraform.d/plugin-cache"
+env DEBIAN_FRONTEND noninteractive
+env TERM linux
 
 run apt-get update && \
     apt-get install -y apt-transport-https curl software-properties-common apt-utils locales tzdata && \
@@ -29,14 +30,10 @@ run apt-get update && \
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" && \
     git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime && \
     sh ~/.vim_runtime/install_awesome_vimrc.sh && \
-    cd /root && \
-    mvn dependency:resolve && \
-    mvn clean && \
     npm install --global is-up-cli && \
     apt autoclean && \
     apt-get clean && \
     apt autoremove && \
-    rm /root/pom.xml && \
     rm -rf /tmp/*
 
 entrypoint ["/bin/bash"]
