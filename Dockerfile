@@ -22,7 +22,7 @@ run apt-get update && \
     add-apt-repository ppa:openjdk-r/ppa && \
     apt-get update && \
     apt-cache policy docker-ce && \
-    apt-get install -y wget lnav ldap-utils vim jq build-essential openssl openssh-client docker-ce openjdk-8-jdk maven python python-dev python-pip vim php php-cli git nodejs npm unzip && \
+    apt-get install -y bash bash-completion wget lnav ldap-utils vim jq build-essential openssl openssh-client docker-ce openjdk-8-jdk maven python python-dev python-pip vim php php-cli git awscli s3cmd nodejs npm unzip && \
     wget https://releases.hashicorp.com/terraform/${TERRAFORM_VER}/${TERRAFORM_ZIP} -O /tmp/${TERRAFORM_ZIP} && \
     unzip /tmp/${TERRAFORM_ZIP} -d /usr/local/bin && \
     rm /tmp/${TERRAFORM_ZIP} && \
