@@ -6,33 +6,28 @@ hub.docker.com - bryandollery/devbox
 
 # What?
 
-Docker image that contains most tools needed to build and compile software and to play around with things. Manifest includes:
+Docker image on ubuntu-16 baseimage (tuned for docker) that contains most tools needed to build and compile software and to play around with things. Manifest includes:
 
- - curl
- - wget 
- - lnav 
- - ldap-utils 
- - vim 
- - jq 
- - openssh-client
- - openssl
- - unzip
- - build-essential (includes c/c++, make, etc.)
- - docker-ce 
- - openjdk-8-jdk (java 8)
- - python 
- - python-dev 
- - python-pip 
- - python-software-properties 
- - php 
- - php-cli 
+ - bash oh-my-bash
+ - vim awesome-vim
+ - curl wget 
  - git 
- - nodejs & npm
- - is-up
+ - lnav 
+ - jq 
+ - unzip
+ - ssoadm ssoconfig ldap-utils
+ - openssl openssh-client
+ - build-essential (includes c/c++, make, etc.)
+ - docker-ce 18 (with kubectl)
+ - openjdk-8-jdk (java 8) set as default java
+ - python python-dev python-pip python-software-properties 
+ - php php-cli 
+ - nodejs npm
+ - is-up json-log-viewer json-viewer
+ - tomcat 8.5
+ - awscli
  - terraform (with aws plugin cached)
  -
- - Also installed are ohmybash and awesome vim, just to make your life easier, but they only work when running as root (see below).
-
 This takes agest to build and takes up 1.5GB
 
 
@@ -42,7 +37,7 @@ Use the build script. By default it builds bryandollery/devbox, but you should c
 
 # Install
 
-Install the run scripts in ~/bin on the host, creating the folder if necessary, and add ~/bin to the path (without checking if it's already there)
+Installs the run scripts in ~/bin on the host, creating the folder if necessary, and add ~/bin to the path (without checking if it's already there)
 
 # Run
 
@@ -54,4 +49,4 @@ Run the run script to run the container. By default your entire home directory i
 
 # How?
 
-The aws.tf file is used to force terraform to download the aws provider plugin. The rest is standard bash scripts.
+The aws.tf file is used to force terraform to download the aws provider plugin. The rest is standard bash scripts. A few things are download with git, curl and wget, the rest are installed by apt.
