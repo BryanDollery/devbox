@@ -1,2 +1,2 @@
 #/bin/bash
-docker build --tag devbox:single .
+time docker build --tag bryandollery/devbox:latest .
