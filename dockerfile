@@ -12,7 +12,7 @@ run apt-get update && \
     echo "tzdata tzdata/Zones/Europe select London" >> /tmp/tzdata.txt && \
     debconf-set-selections /tmp/tzdata.txt && \
     sh -c "$(curl -fsSL get.docker.com -o get-docker.sh)" && \
-    apt-get install -y wget jq build-essential openjdk-8-jdk iputils-ping net-tools python python-dev python-pip neovim php php-cli git nodejs gawk autoconf automake bison libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev pkg-config sqlite3 zlib1g-dev libgmp-dev libreadline-dev libssl-dev && \
+    apt-get install -y wget jq build-essential openjdk-8-jdk iputils-ping net-tools python python-dev python-pip neovim php php-cli git nodejs gawk autoconf automake bison libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev pkg-config sqlite3 zlib1g-dev libgmp-dev libreadline-dev libssl-dev netcat nmap vim netstat tcpdump && \
     apt autoclean && \
     apt-get clean && \
     apt autoremove
