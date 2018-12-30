@@ -30,9 +30,7 @@ run npm install -g n && \
     curl -sSL https://get.rvm.io | bash - && \
     . /etc/profile.d/rvm.sh && \
     /usr/local/rvm/bin/rvm install ruby --default && \
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" && \
-    usermod -aG docker && \
-    usermod -aG rvm
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 
 # entrypoint ["/bin/bash"]
 
