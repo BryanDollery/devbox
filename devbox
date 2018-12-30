@@ -1,0 +1,12 @@
+#!/bin/bash
+
+docker run -it --rm --name devbox \
+    --network host \
+    --hostname devbox \
+    -v ~/.ssh:/root/.ssh \
+    -v m2:/root/.m2 \
+    -v ~/.aws/credentials:/root/.aws/credentials \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /c:/c \
+    -w `pwd` \
+    bryandollery/devbox "$@"

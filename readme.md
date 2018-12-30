@@ -27,4 +27,4 @@ This takes nearly 9 minutes to build and takes up 1.6GB
 Run the build script
 
 # Run
-Run the run script 
+I have also included a script called devbox, that can be put on your path to make a 'devbox' command. 

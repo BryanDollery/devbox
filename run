@@ -1,2 +1,0 @@
-#/bin/bash
-docker container run -it --rm -h devbox -v $HOME/bin:/root/bin/ -v /var/run/docker.sock:/var/run/docker.sock -v $HOME/dev/codification/git/devbox:/devbox -v $HOME:$HOME -v $HOME/.ssh:/root/.ssh -w $HOME devbox:single
