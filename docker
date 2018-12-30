@@ -34,6 +34,6 @@ run npm install -g n && \
     usermod -aG docker && \
     usermod -aG rvm
 
-entrypoint ["/bin/bash"]
+# entrypoint ["/bin/bash"]
 
 
