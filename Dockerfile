@@ -2,7 +2,6 @@ from ubuntu:latest
 
 run apt-get update && \
     apt-get install -y curl software-properties-common && \
-    curl -sSL https://deb.nodesource.com/setup_10.x | bash - && \
     add-apt-repository ppa:openjdk-r/ppa && \
     add-apt-repository ppa:neovim-ppa/unstable && \
     apt-get update && \
@@ -11,7 +10,8 @@ run apt-get update && \
     echo "tzdata tzdata/Areas select Europe" > /tmp/tzdata.txt && \
     echo "tzdata tzdata/Zones/Europe select London" >> /tmp/tzdata.txt && \
     debconf-set-selections /tmp/tzdata.txt && \
-    apt-get install -y wget jq build-essential openjdk-8-jdk iputils-ping net-tools python python-dev python-pip neovim php php-cli git nodejs gawk autoconf automake bison libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev pkg-config sqlite3 zlib1g-dev libgmp-dev libreadline-dev libssl-dev netcat nmap vim tcpdump && \
+    curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
+    apt-get install -y wget jq build-essential openjdk-8-jdk maven iputils-ping net-tools nodejs python python-dev python-pip neovim php php-cli git gawk autoconf automake bison libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev pkg-config sqlite3 zlib1g-dev libgmp-dev libreadline-dev libssl-dev netcat nmap vim tcpdump && \
     apt autoclean && \
     apt-get clean && \
     apt autoremove
@@ -37,7 +37,6 @@ run curl -sSL https://get.rvm.io | bash - && \
 
 run sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 
+
+
 run echo "Complete"
-
-
-
