@@ -36,7 +36,8 @@ run curl -sSL https://get.rvm.io | bash - && \
     /usr/local/rvm/bin/rvm install ruby --default
 
 run sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
-
+run update-java-alternatives --set /usr/lib/jvm/java-1.8.0-openjdk-amd64 && \
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 
 
 run echo "Complete"
