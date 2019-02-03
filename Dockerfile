@@ -1,7 +1,9 @@
 from ubuntu:latest
 
 run apt-get update && \
-    apt-get install -y curl software-properties-common && \
+    apt-get install -y curl software-properties-common apt-transport-https && \
+    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
+    echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list && \
     add-apt-repository ppa:openjdk-r/ppa && \
     add-apt-repository ppa:neovim-ppa/unstable && \
     apt-get update && \
@@ -11,10 +13,16 @@ run apt-get update && \
     echo "tzdata tzdata/Zones/Europe select London" >> /tmp/tzdata.txt && \
     debconf-set-selections /tmp/tzdata.txt && \
     curl -sL https://deb.nodesource.com/setup_11.x | bash - && \
-    apt-get install -y wget jq build-essential openjdk-8-jdk maven iputils-ping net-tools nodejs python python-dev python-pip neovim php php-cli git gawk autoconf automake bison libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev pkg-config sqlite3 zlib1g-dev libgmp-dev libreadline-dev libssl-dev netcat nmap vim tcpdump && \
+    apt-get install -y wget jq build-essential dirmngr openjdk-8-jdk maven iputils-ping net-tools nodejs python python-dev python-pip neovim php php-cli git gawk autoconf automake bison libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev pkg-config sqlite3 zlib1g-dev libgmp-dev libreadline-dev libssl-dev netcat nmap vim tcpdump kubectl dnsutils groff unzip && \
     apt autoclean && \
     apt-get clean && \
-    apt autoremove
+    apt autoremove && \
+    touch /root/.bash_aliases && \
+    chmod a+rwx /root/.bash_aliases && \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)" && \
+    echo ". /root/.bash_alises" >> .bash_profile && \
+    echo "alias ll='ls -gAlFh'" >> /root/.bash_aliases.sh && \
+    echo "alias tf='terraform'" >> /root/.bash_aliases.sh
 
 run npm install -g n && \
     n latest
@@ -28,16 +36,19 @@ run curl -sSL https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz -
     mkdir -p /root/go && \
     echo "export GOROOT=/root/go" >> ~/.bash_profile && \
     echo "export PATH=$PATH:/home/bryan_dollery/bin:/usr/local/go/bin" >> ~/.bash_profile && \
-    echo "export PATH=$PATH:$GOROOT/bin" >> ~/.bash_profile && \
-    echo "alias ll='ls -gAlFh'" >> ~/.bash_profile
+    echo "export PATH=$PATH:$GOROOT/bin" >> ~/.bash_profile
 
 run curl -sSL https://get.rvm.io | bash - && \
     . /etc/profile.d/rvm.sh && \
     /usr/local/rvm/bin/rvm install ruby --default
 
-run sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 run update-java-alternatives --set /usr/lib/jvm/java-1.8.0-openjdk-amd64 && \
     export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
 
+run pip install --upgrade --no-cache-dir awscli --ignore-installed six && aws --version
+
+run curl -sSL https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip -o /tmp/tf.zip && cd /tmp && unzip tf.zip && mv terraform /usr/local/bin/ && rm -rf /tmp/tf*
+
+run curl -sSL https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip -o /tmp/packer.zip && cd /tmp && unzip packer.zip && mv packer /usr/local/bin && rm -rf /tmp/packer*
 
 run echo "Complete"
