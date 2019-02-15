@@ -42,11 +42,21 @@ run curl -sSL https://get.rvm.io | bash - && \
     . /etc/profile.d/rvm.sh && \
     /usr/local/rvm/bin/rvm install ruby --default
 
-run update-java-alternatives --set /usr/lib/jvm/java-1.8.0-openjdk-amd64 && \
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+env JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre
 
-run pip install --upgrade --no-cache-dir awscli --ignore-installed six && aws --version
-run curl -sSL https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip -o /tmp/tf.zip && cd /tmp && unzip tf.zip && mv terraform /usr/local/bin/ && rm -rf /tmp/tf*
-run curl -sSL https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip -o /tmp/packer.zip && cd /tmp && unzip packer.zip && mv packer /usr/local/bin && rm -rf /tmp/packer*
-run curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get | bash
+run curl -sSL https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip -o /tmp/tf.zip && \
+    cd /tmp && \
+    unzip tf.zip && \
+    mv terraform /usr/local/bin/ && \
+    rm -rf /tmp/tf* && \
+    curl -sSL https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip -o /tmp/packer.zip && \
+    cd /tmp && \
+    unzip packer.zip && \
+    mv packer /usr/local/bin && \
+    rm -rf /tmp/packer* && \
+    curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get | bash && \
+    pip install --upgrade --no-cache-dir awscli --ignore-installed six && \
+    aws --version && \
+    pip install ansible
+
 run echo "Complete"
