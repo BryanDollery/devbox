@@ -59,4 +59,13 @@ run curl -sSL https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11
     aws --version && \
     pip install ansible
 
+volume git
+volume helm
+volume kube
+volume m2
+volume aws
+volume vault
+volume ssh
+volume bin
+
 run echo "Complete"

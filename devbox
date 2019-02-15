@@ -3,10 +3,16 @@
 docker run -it --rm --name devbox \
     --network host \
     --hostname devbox \
-    -v ~/.ssh:/root/.ssh \
-    -v m2:/root/.m2 \
-    -v ~/.aws/credentials:/root/.aws/credentials \
+    -v m2:/root/.m2/ \
+    -v git:/git/ \
+    -v aws:/root/.aws/ \
+    -v helm:/root/.helm \
+    -v kube:/root/.kube \
+    -v vault:/vault/ \
+    -v ssh2/:/root/.ssh/ \
+    -v bin:/root/bin \
+    -v /c/Users/Bryan/.gitconfig:/root/.gitconfig \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /c:/c \
-    -w `pwd` \
+    -w /git/codification.io \
     bryandollery/devbox "$@"
